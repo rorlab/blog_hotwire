@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_stream_from 'comments' %>
 
 <%= render partial: 'posts/post_show', object: @post, as: :post %>
 
@@ -6,5 +6,12 @@
   <%= link_to "Edit", edit_post_path(@post) %> |
   <%= link_to "Destroy", @post, data: { turbo_method: :delete } %> |
   <%= link_to "Back to posts", posts_path %>
-
 </div>
+
+<h3>Comments</h3>
+
+<ul id='comments' class='comments'>
+  <%= render @post.comments %>
+</ul>
+
+<%= render 'comments/form', comment: @post.comments.new %>

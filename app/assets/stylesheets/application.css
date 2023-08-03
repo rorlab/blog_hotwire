@@ -14,34 +14,49 @@
  *= require_self
  */
 
+.object-errors {
+  margin: 0 0 .5rem 0;
+  color: red;
+}
+
+.new-post {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  margin-left: 1rem;
+}
+
+.post-content {
+  border: 1px solid lightblue;
+  border-radius: .5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-show {
+  margin-bottom: 1rem;
+}
+.comments {
+  margin-top: -1rem;
+}
+
+.comment {
+  margin-bottom: .6rem;
+}
+
+.comments .comment_body {
+  border: 1px dotted lightblue;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  margin-block: .5rem;
+}
+
 turbo-frame {
   display: block;
   border-radius: .5rem;
-    border: 1px dashed #DC3023;
-    padding: 1rem;
-  }
-  
-  .object-errors {
-    margin: 0 0 .5rem 0;
-    color: red;
-  }
-  
-  .new-post {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .actions {
-    margin-left: 1rem;
-  }
-  
-  .post-content {
-    border: 1px solid lightblue;
-    border-radius: .5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .post-show {
-    margin-bottom: 1rem;
+  border: 1px dashed #DC3023;
+  padding: 1rem;
+  margin-block: .5rem;
 }

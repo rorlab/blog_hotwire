@@ -1,0 +1,18 @@
+<li id="<%= dom_id comment %>" class="comment">
+  <div class="comment-header">
+    [ID: #<%= comment.id %>]
+    <small>
+      <i>
+        <%= comment.created_at %>
+      </i>
+    </small>
+  </div>
+  <div class="comment_body">
+    <%= comment.content %>
+  </div>
+  <div class="comment_footer">
+    <%= link_to "Edit", edit_post_comment_path(comment.post, comment), data: { turbo_frame: dom_id(comment, :edit) } %> |
+    <%= link_to "Destroy", [comment.post, comment], data: { turbo_method: :delete } %>
+  </div>
+  <%= turbo_frame_tag dom_id(comment, :edit) %>
+</li>
