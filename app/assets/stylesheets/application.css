@@ -54,6 +54,9 @@
   margin-bottom: .6rem;
 }
 
+.new-comment {
+  margin-top: -1rem;
+}
 .comments .comment_body {
   border: 1px dotted lightblue;
   border-radius: .5rem;

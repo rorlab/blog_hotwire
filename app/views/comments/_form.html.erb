@@ -1,5 +1,12 @@
 <%= form_with model: [comment.post, comment] do |form| %>
   <%= form.text_field :content, placeholder: 'Comment', size: '100%' %>
+  <% if form.object.errors.full_messages_for(:content).any? %>
+    <ul class='object-errors'>
+      <% form.object.errors.full_messages_for(:content).each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= form.submit %>
-  <%= link_to 'Close', comment.post, class: 'button' if request.headers['Turbo-Frame'] %>
+  <%= link_to 'Close', comment.post, class: 'button' if request.headers['Turbo-Frame'] && comment.persisted? %>
 <% end %>

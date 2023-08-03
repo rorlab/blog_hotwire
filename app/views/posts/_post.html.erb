@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>">
+<div id="<%= dom_id post %>" class="animate__animated" data-animate-in="animate__bounceIn" data-animate-out="animate__bounceOut">
   <div>
     <span><%= post.id %>.</span>
     <span><%= link_to post.title, post, data: { turbo_frame: '_top' } %></span>

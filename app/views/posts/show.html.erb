@@ -14,4 +14,7 @@
   <%= render @post.comments %>
 </ul>
 
-<%= render 'comments/form', comment: @post.comments.new %>
+<h4>📝 Write Your Comment:</h4>
+<%= turbo_frame_tag "new_comment", class: 'new-comment' do %>
+  <%= render 'comments/form', comment: @post.comments.new %>
+<% end %>

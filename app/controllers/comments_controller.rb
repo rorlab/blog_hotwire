@@ -7,14 +7,18 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append(
-            :comments,
-            partial: "comments/comment",
-            locals: { comment: @comment }
+          render turbo_stream: turbo_stream.update(
+            :new_comment,
+            partial: "comments/form",
+            locals: { comment: @post.comments.new }
           )
         end
         format.html { redirect_to @post, notice: 'Comment was successfully created.' }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            "new_comment", partial: 'comments/form', locals: { comment: @comment })
+        end
         format.html { render :new, status: :unprocessable_entity }
       end
     end
