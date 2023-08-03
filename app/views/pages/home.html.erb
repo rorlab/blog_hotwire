@@ -2,7 +2,9 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <div id='nav'>
-  <%= link_to "About", "/about", data: { turbo_stream: true } %>
+  <%= link_to "About", "/about" %>
 </div>
 
-<%= link_to "Posts", posts_path %>
+<p>
+  <%= link_to "Posts", posts_path %>
+</p>

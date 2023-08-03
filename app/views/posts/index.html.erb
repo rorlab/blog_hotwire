@@ -1,16 +1,18 @@
+<%= turbo_stream_from :posts %>
 <p style="color: green"><%= notice %></p>
 
 <h1>Posts</h1>
 
-<%= turbo_frame_tag :new_post do %>
+<%= turbo_frame_tag :new_post, class: 'new-post' do %>
   <%= link_to "New post", new_post_path %>
 <% end %>
 
-<div id="posts">
+<%= turbo_frame_tag "posts" do %>
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
   <% end %>
-</div>
+<% end %>
+
+<p>
+  <%= link_to 'Root', root_path %>
+</p>

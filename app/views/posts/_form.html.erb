@@ -1,24 +1,19 @@
 <%= form_with(model: post, data: { controller: 'reset-form', action: 'turbo:submit-end->reset-form#reset'}) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%#= render 'posts/post_errors' %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: 'Title', autofocus: true, size: '100%' %>
+    <% if form.object.errors.full_messages_for(:title).any? %>
+      <ul class='object-errors'>
+        <% form.object.errors.full_messages_for(:title).each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, placeholder: 'Content' %>
   </div>
 
   <div>
