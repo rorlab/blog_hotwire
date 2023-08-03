@@ -45,9 +45,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.destroy
+        format.turbo_stream
         format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
       else
-        format.html { redirect_to @post, notice: 'Comment was not destroyed.'}
+        format.html { redirect_to @post, notice: 'Comment was not destroyed.' }
       end
     end
   end
