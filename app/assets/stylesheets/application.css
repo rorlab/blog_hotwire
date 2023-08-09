@@ -14,6 +14,11 @@
  *= require_self
  */
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 @media only screen and (max-width: 720px) {
 
   textarea,
@@ -84,6 +89,6 @@ turbo-frame::after {
   text-align: right;
   border-radius: 0 0 .4rem .4rem;
   font-size: .7rem;
-  width: calc(100% - 5px);
+  width: 100%;
     color: #ff0000;
 }
