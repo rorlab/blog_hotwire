@@ -6,13 +6,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update(
-            :new_comment,
-            partial: "comments/form",
-            locals: { comment: @post.comments.new }
-          )
-        end
+        flash.now[:notice] = "Comment was successfully created."
+        format.turbo_stream
         format.html { redirect_to @post, notice: 'Comment was successfully created.' }
       else
         format.turbo_stream do
@@ -33,6 +28,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update(comment_params)
+        flash.now[:notice] = 'Comment was successfully updated.'
+        format.turbo_stream
         format.html { redirect_to @post, notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity}
@@ -45,6 +42,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.destroy
+        flash.now[:notice] = 'Comment was successfully destroyed.'
         format.turbo_stream
         format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
       else

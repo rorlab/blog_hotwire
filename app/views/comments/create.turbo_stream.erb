@@ -1,0 +1,2 @@
+<%= turbo_stream.update :new_comment, partial: "comments/form", locals: { comment: @post.comments.new } %>
+<%= render_turbo_stream_flash_messages %>
