@@ -1,24 +1,17 @@
-# README
+# Rails 7 Hotwire Demo by RORLAB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+본 샘플 프로젝트는 2023-08-08 RORLAB 강의 중에 사용한 Blog 프로젝트입니다. 
 
-Things you may want to cover:
+Hotwire는 Ruby on Rails를 위한 기본 프레임워크로, 동적 웹 애플리케이션을 빌드하는데 도움을 줍니다. Hotwire의 일부인 Turbo와 Stimulus를 사용하여 웹 페이지에 실시간 업데이트를 손쉽게 추가할 수 있습니다.
 
-* Ruby version
+특히, Turbo Stream은 변경 사항을 브라우저에 실시간으로 푸시하기 위한 방법 중 하나입니다. Hotwire의 다른 부분인 Action Cable을 통해 Broadcasting이라는 기능을 사용하여 WebSocket을 이용해 클라이언트에 실시간으로 변경 사항을 전송할 수 있습니다.
 
-* System dependencies
+만약 동일한 ID를 가진 message를 Turbo Stream과 Broadcasting 모두로 응답할 때, 이 응답들이 동일한 클라이언트나 페이지에 도달한다면 중복으로 표시될 가능성이 있습니다. 이렇게 되면 예상치 못한 동작이나 UI 문제가 발생할 수 있습니다.
 
-* Configuration
+중복 표시를 방지하기 위해서는 몇 가지 전략을 사용할 수 있습니다:
 
-* Database creation
+1. **응답 메커니즘 선택**: Turbo Stream과 Broadcasting 중 하나만 사용하여 응답을 전송하세요.
+2. **클라이언트 로직**: 클라이언트 측에서 동일한 ID를 가진 메시지가 이미 표시되었는지 확인하고, 중복으로 표시되지 않도록 합니다.
+3. **서버 로직**: 서버 측에서 해당 클라이언트나 세션에게 이미 메시지를 전송했는지 확인하고 중복 응답을 방지합니다.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+따라서, Hotwire로 빌드된 웹 애플리케이션에서 중복 표시 문제를 방지하려면, 애플리케이션의 로직을 신중하게 설계해야 합니다.
